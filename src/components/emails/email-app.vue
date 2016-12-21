@@ -2,18 +2,10 @@
   <section>
 
     <h2>emails-main</h2>
-    <hr>
     <div class="container">
-      <div>
-        <email-list :emails="emails" @openEmail="selectEmail">
-        </email-list>
-      </div>
-      <div>
-        <email-details :selectedEmail="selectedEmail"></email-details>
-      </div>
-    </div>
-    <hr>
-    <div>
+      <email-list :emails="emails" @openEmail="selectEmail">
+      </email-list>
+      <email-details :selectedEmail="selectedEmail"></email-details>
       <email-status :emails="emails"></email-status>
     </div>
 
@@ -59,8 +51,8 @@
 </script>
 
 <style scoped>
- .container{
-   /*display: flex;
-   justify-content: space-between;*/
- }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
