@@ -60,7 +60,7 @@
 
 <style scoped>
  .container{
-   display: flex;
-   justify-content: space-between;
+   /*display: flex;
+   justify-content: space-between;*/
  }
 </style>

@@ -1,5 +1,5 @@
 import Home             from './home.vue';
-import Emails           from './emails.vue';
+import Emails           from './components/emails/email-app.vue';
 import Events           from './events.vue';
 import Locations        from './locations.vue';
 
