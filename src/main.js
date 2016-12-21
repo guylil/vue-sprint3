@@ -1,20 +1,12 @@
-import style from './style.scss';
-import Vue from 'vue'
-import VueRouter from 'vue-router';
+import Vue              from 'vue';
+import VueRouter        from 'vue-router';
 
-import Home from './components/home';
-import About from './components/about';
-import MainNav from './components/main-nav';
+import style            from './style.scss';
+import App              from './App.vue';
+import MainNav          from './components/main-nav';
+import routes           from './routes.js';
 
 Vue.use(VueRouter);
-
-const routes = [{
-  path: '/',
-  component: Home
-}, {
-  path: '/about',
-  component: About
-}]
 
 const router = new VueRouter({
   mode: 'history',
@@ -24,6 +16,7 @@ const router = new VueRouter({
 const app = new Vue({
   router,
   components: {
-    'main-nav': MainNav
-  }
+    'App':  App,
+  },
+  render: h => h(App)
 }).$mount('#app')
