@@ -18,51 +18,56 @@ app.use(bodyParser.json());
 //     {id: 9,title: 'Mastering $', price: 8, description: 'jq bla bla'}
 // ];
 
-let items = [
+let item = [
   { id: 1, name: 'Carmos', price: 98982, isSelected: false },
   { id: 2, name: 'Carting', price: 1232, isSelected: false },
   { id: 3, name: 'Carmupo', price: 4232, isSelected: false },
   { id: 4, name: 'Carmuk', price: 387, isSelected: false }
 ];
 
+let emails = [
+  { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
+  { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
+  { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false },
+  { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
+]
+
+
 // *** REST API ***
 
-
-
-
 // LIST
-app.get('/item', (req, res) => {
+app.get('/emails', (req, res) => {
   //   setTimeout(()=>res.json(items), 2000);
-  res.json(items);
+  res.json(emails);
 })
 
 
 // READ
-app.get('/item/:id', (req, res) => {
+app.get('/emails/:id', (req, res) => {
   const id = +req.params.id;
-  const item = items.find(currItem => currItem.id === id);
-  res.json(item)
+  const email = emails.find(currItem => currItem.id === id);
+  res.json(email)
 })
 
 // DELETE
-app.delete('/item/:id', (req, res) => {
+app.delete('/emails/:id', (req, res) => {
   const id = +req.params.id;
-  items = items.filter(currItem => currItem.id !== id);
+  emails = emails.filter(currItem => currItem.id !== id);
   res.json({ msg: 'Deleted' });
 })
 
 // CREATE
-app.post('/item', (req, res) => {
-  const item = req.body;
-  item.id = findNextId();
-  items.push(item);
+app.post('/emails', (req, res) => {
+  const email = req.body;
+  email.id = findNextId();
+  emails.push(email);
   res.json({ msg: 'Item was added!' });
 })
 
 // UPDATE
-app.put('/item', (req, res) => {
-  const item = req.body;
-  items = items.map(currItem => (currItem.id === item.id) ? item : currItem);
+app.put('/emails/:id', (req, res) => {
+  const email = req.body;
+  emails = emails.map(currItem => (currItem.id === email.id) ? email : currItem);
   res.json({ msg: 'Item was updates!' });
 })
 
@@ -72,11 +77,8 @@ app.listen(3000, () => {
 
 function findNextId() {
   var maxId = 0;
-  items.forEach(item => {
-    if (item.id > maxId) maxId = item.id;
+  emails.forEach(email => {
+    if (email.id > maxId) maxId = email.id;
   });
   return maxId + 1;
 }
-
-
-
