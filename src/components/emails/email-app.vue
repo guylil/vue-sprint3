@@ -27,22 +27,37 @@
             { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
             { id: 3, subject: 'bla bla Rulzz', from: 'Dor', body: '333', isRead: false }
         ],
-        openedEmails: 0,
+        //openedEmails: 0,
         selectedEmail: {}
         //id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false 
       }
     },
     methods: {
+      // openedEmails: this.emails 
+	    openedEmails(){ 
+        return this.emails.reduce((acc, currEmail) => {
+          if(currEmail.isRead === true){
+              return acc = acc+1
+          }
+          else{return acc}
+        }, 0);
+      //   // console.log(openedEmails);
+      },
+
       selectEmail(emailId) {
           this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
           // change read status
           this.selectedEmail.isRead = true;
-          // console.log('Email id selected: ', this.selectedEmail);
+          //////// TODO => put the returned value below into a param (to be used in the emails-status)
+          this.openedEmails();
+          console.log(this.openedEmails());
       }
     },
-    computed: {
+    computed: {      
     },
     mounted() {
+      //////// TODO => put the returned value below into a param (to be used in the emails-status)
+      this.openedEmails()
       //this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
     },
     components: {
