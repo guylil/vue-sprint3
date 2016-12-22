@@ -14,7 +14,8 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "vue": "^2.0.1",
-    "vue-router": "^2.0.1"
+    "vue-router": "^2.0.1",
+    "vue-resource": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -74,5 +75,16 @@
     "npm": ">= 3.0.0"
   },
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guylil/vue-sprint3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guylil/vue-sprint3/issues"
+  },
+  "homepage": "https://github.com/guylil/vue-sprint3#readme"
 }

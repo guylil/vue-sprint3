@@ -7,6 +7,8 @@ app.use(express.static('public'))
 app.use(cors());
 app.use(bodyParser.json());
 
+var data = require('./EventsRecommended.js');
+
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
