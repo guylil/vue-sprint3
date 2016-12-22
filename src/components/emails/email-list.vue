@@ -5,6 +5,7 @@
       <li v-for="(currEmail, idx) in emails">
         <email-preview :item="currEmail" 
                         @openItem="$emit('openEmail', $event)">
+                        >
         </email-preview>
       </li>
     </ul>
@@ -41,6 +42,6 @@
 }
 .emails_list > LI{
   cursor: pointer;
+  margin: 3px;
 }
-
 </style>

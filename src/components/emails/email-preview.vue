@@ -1,11 +1,21 @@
-
 <!--Here I tryied to treat an Eamil as an Item-->
 <template>
-  <div class="emails_head" @click="$emit('openItem', item.id)" :style="(item.isRead) ? 'font-weight: normal' : 'font-weight: bold'">
-    <span class="caption">Subject:</span> {{item.subject}} 
-    <span class="caption">Sender:</span> {{item.from}}
-  </div>
+  
+  <section class="emails_head" @click="openItem" :style="(item.isRead) ? 'font-weight: normal' : 'font-weight: bold'">
+    <div class="flex">
+      <div>
+        <span class="caption">Subject:</span> {{item.subject}} 
+        <span class="caption">Sender:</span> {{item.from}}
+      </div>
+      <div class="border nowrap">
+        fld der
+      </div>
+    </div>
+    
+  </section>
+
 </template>
+
 
 <script>
 
@@ -21,9 +31,9 @@
       }
     },
     methods: {
-      // openItem(){
-      //   this.$emit('openItem', this.item.id)
-      // }
+      openItem() {
+        this.$emit('openItem', this.item.id)
+      }
     },
     computed: {},
     components: {
@@ -34,8 +44,23 @@
 </script>
 
 <style scoped>
-.emails_head{
-  border-bottom: solid 1px silver;
-  padding: 5px 0;
-}
+  .emails_head{
+    border-bottom: solid 1px silver;
+    padding: 5px 0;
+  }
+
+  .border{border: solid 1px red;}
+
+  .flex{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .items-container{
+  }
+
+  .nowrap{
+    white-space: nowrap;
+  }
+
 </style>
