@@ -21,6 +21,8 @@
 
     data() {
       return {
+
+        
         emails: [
           { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
           { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
