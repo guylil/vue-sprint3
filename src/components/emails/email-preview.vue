@@ -1,12 +1,10 @@
 
 <!--Here I tryied to treat an Eamil as an Item-->
 <template>
-  <section @click="openItem" >
-    Subject: {{item.subject}} 
-    Sender: <strong> {{item.from}}</strong>
-    email_ID:{{item.id}}
-    <hr>
-  </section>
+  <div class="emails_head" @click="$emit('openItem', item.id)" :style="(item.isRead) ? 'font-weight: normal' : 'font-weight: bold'">
+    <span class="caption">Subject:</span> {{item.subject}} 
+    <span class="caption">Sender:</span> {{item.from}}
+  </div>
 </template>
 
 <script>
@@ -23,9 +21,9 @@
       }
     },
     methods: {
-      openItem(){
-        this.$emit('openItem',{itemId: this.item.id})
-      }
+      // openItem(){
+      //   this.$emit('openItem', this.item.id)
+      // }
     },
     computed: {},
     components: {
@@ -36,4 +34,8 @@
 </script>
 
 <style scoped>
+.emails_head{
+  border-bottom: solid 1px silver;
+  padding: 5px 0;
+}
 </style>

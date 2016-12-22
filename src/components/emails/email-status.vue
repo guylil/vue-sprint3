@@ -1,20 +1,31 @@
 <template>
-<section>
+  <section>
+    <div class="border">
+      Emails reading status: {{emails.length}}
 
-    <h2>email-status: Total Emails: {{emails.length}}</h2>
+      <div class="progress active">
+        <div class="progress-bar" 
+              style="width:0%; line-height:22px;" 
+              :style="{width: emails.length*10+'%'}">
+                {{emails.length}}
+        </div>
+        
+      </div>
 
-    <hr>
-</section>
+    </div>
+
+  </section>
 </template>
 
 <script>
     
   export default {
-    props:{emails: {}
+    props:{
+      emails: {}
     },
     data() {
       return {
-        msg: 'Hello-email-status'
+        msg: 'Lorem Ipsum'
       }
     },
     methods: {},
@@ -27,4 +38,7 @@
 </script>
 
 <style scoped>
+  .progress {
+    margin: 6px 0;
+  }
 </style>

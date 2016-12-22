@@ -1,23 +1,21 @@
 <template>
   <section> THIS IS Emails List
 
-    <ul>
+    <ul class="emails_list">
       <li v-for="(currEmail, idx) in emails">
         <email-preview :item="currEmail" 
-                        @openItem="$emit('openEmail',currEmail.id)">
-
+                        @openItem="$emit('openEmail', $event)">
         </email-preview>
-
       </li>
     </ul>
-    <hr>
   </section>
 </template>
 
 <script>
   import EmailPreview from './email-preview.vue'
   export default {
-    props:{emails:{}
+    props:{
+      emails:{}
     },
     data() {
       return {
@@ -36,9 +34,12 @@
 </script>
 
 <style scoped>
-ul{
+.emails_list{
   list-style-type: none;
   background-color: lightblue;
+  padding: 10px 6px;
+}
+.emails_list > LI{
   cursor: pointer;
 }
 

@@ -6,6 +6,8 @@
       <email-list :emails="emails" @openEmail="selectEmail">
       </email-list>
       <email-details :selectedEmail="selectedEmail"></email-details>
+    </div>
+    <div>
       <email-status :emails="emails"></email-status>
     </div>
 
@@ -21,24 +23,27 @@
 
     data() {
       return {
-        msg: 'Hello-main-email',
-        emails: [{ id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
-        { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
-        { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false }
+        msg: 'Lorem Ipsum',
+        emails: [
+            { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
+            { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
+            { id: 3, subject: 'bla bla Rulzz', from: 'Dor', body: '333', isRead: false }
         ],
-        selectedEmail: { id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false }
+        selectedEmail: {}
+          //id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false 
       }
     },
     methods: {
       selectEmail(emailId) {
-        console.log('Email id selected: ', emailId);
-        this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) });
-// TODO CHANGE READ STATUS
+        this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
+        // change read status
+        this.selectedEmail.isRead = true;
+        // console.log('Email id selected: ', this.selectedEmail);
       }
     },
     computed: {},
     mounted() {
-      this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
+      // this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
     },
     components: {
       'email-list': EmailList,
@@ -50,9 +55,17 @@
 
 </script>
 
-<style scoped>
+<style>
   .container {
     display: flex;
     justify-content: space-between;
+  }
+  
+  .caption {
+    color: blueviolet;
+  }
+  
+  .border {
+    border: solid 1px red;
   }
 </style>
