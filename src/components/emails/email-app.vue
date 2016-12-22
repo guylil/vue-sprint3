@@ -27,6 +27,7 @@
             { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
             { id: 3, subject: 'bla bla Rulzz', from: 'Dor', body: '333', isRead: false }
         ],
+        openedEmails: 0,
         selectedEmail: {}
         //id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false 
       }
@@ -39,7 +40,8 @@
           // console.log('Email id selected: ', this.selectedEmail);
       }
     },
-    computed: {},
+    computed: {
+    },
     mounted() {
       //this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
     },

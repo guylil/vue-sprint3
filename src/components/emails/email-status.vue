@@ -25,10 +25,12 @@
     },
     data() {
       return {
-        msg: 'Lorem Ipsum'
+        msg: 'Lorem Ipsum',
+
       }
     },
-    methods: {},
+    methods: {
+    },
     computed: {},
     components: {
     }
