@@ -1,6 +1,6 @@
 <template>
   <section class="emails-main">
-      <h2 class="text-center">emails-app</h2>
+    <h2 class="text-center">emails-app</h2>
     <div class="emails-main-container">
       <email-list :emails="emails" @openEmail="selectEmail">
       </email-list>
@@ -21,8 +21,6 @@
 
     data() {
       return {
-
-        
         emails: [
           { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
           { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },

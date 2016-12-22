@@ -4,6 +4,8 @@
     <h2>{{msg}}</h2>
     <evento-filter></evento-filter>
     <evento-list :events="events"></evento-list>
+    <br clear="all" />
+    <evento-details :events="events"></evento-details>
 
     <br />
 
@@ -14,6 +16,8 @@
 <script>
   import EventoFilter from './evento-filter.vue'
   import EventoList   from './evento-list.vue'
+  import EventoDetails   from './evento-details.vue'
+
   // var data = require('./src/assets/data/EventsRecommended.js');
   var data = 
   [
@@ -176,7 +180,8 @@
     computed: {},
     components: {
       'evento-filter': EventoFilter,
-      'evento-list': EventoList
+      'evento-list': EventoList,
+      'evento-details': EventoDetails
     }
   }
 
