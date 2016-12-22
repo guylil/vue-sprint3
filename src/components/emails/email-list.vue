@@ -4,8 +4,8 @@
     <ul>
       <li v-for="(currEmail, idx) in emails">
         <email-preview :item="currEmail" 
-                        @openItem="$emit('openEmail',currEmail.id)">
-
+                        @openItem="$emit('openEmail',currEmail.id)"
+                        >
         </email-preview>
 
       </li>
@@ -37,9 +37,10 @@
 
 <style scoped>
 ul{
+  padding:2px 5px;
   list-style-type: none;
   background-color: lightblue;
   cursor: pointer;
+  margin: 3px;
 }
-
 </style>

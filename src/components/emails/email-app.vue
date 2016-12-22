@@ -1,11 +1,19 @@
 <template>
-  <section>
+  <section class="emails-main">
 
-    <h2>emails-main</h2>
-    <div class="container">
-      <email-list :emails="emails" @openEmail="selectEmail">
-      </email-list>
-      <email-details :selectedEmail="selectedEmail"></email-details>
+    <h2 class="text-center">emails-app</h2>
+    <hr>
+    <div class="emails-main-container">
+      <div>
+        <email-list :emails="emails" @openEmail="selectEmail">
+        </email-list>
+      </div>
+      <div>
+        <email-details :selectedEmail="selectedEmail"></email-details>
+      </div>
+    </div>
+    <hr>
+    <div>
       <email-status :emails="emails"></email-status>
     </div>
 
@@ -22,9 +30,11 @@
     data() {
       return {
         msg: 'Hello-main-email',
-        emails: [{ id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
-        { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
-        { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false }
+        emails: [
+          { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
+          { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
+          { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false },
+          { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
         ],
         selectedEmail: { id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false }
       }
@@ -33,7 +43,7 @@
       selectEmail(emailId) {
         console.log('Email id selected: ', emailId);
         this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) });
-// TODO CHANGE READ STATUS
+        // TODO CHANGE READ STATUS
       }
     },
     computed: {},
@@ -47,12 +57,22 @@
     }
   }
 
-
 </script>
 
 <style scoped>
-  .container {
+
+.emails-main{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    border: 4px solid lightgray;
+  
+}
+.emails-main-container {
     display: flex;
     justify-content: space-between;
+    background-color: lightslategray;
+    border-color: #e7e7e7;
+    border: 4px solid lightgray;
+    
   }
 </style>
