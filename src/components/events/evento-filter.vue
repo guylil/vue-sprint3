@@ -1,16 +1,18 @@
 <template>
-<section>
+  <section>
 
-    <h2>{{msg}}</h2>
-
-    <hr>
-</section>
+    Filter component
+    <br />
+    <input placeholder="Enter your search" />
+    
+  </section>
 </template>
 
 <script>
     
   export default {
-    props:{emails: {}
+    props:{
+      emails: {}
     },
     data() {
       return {
@@ -27,4 +29,5 @@
 </script>
 
 <style scoped>
+
 </style>
