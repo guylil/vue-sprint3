@@ -39,10 +39,9 @@ let emails = [
 
 // LIST
 app.get('/emails', (req, res) => {
-  //   setTimeout(()=>res.json(items), 2000);
-  res.json(emails);
+    // setTimeout(()=>res.json(items), 2000);
+  res.json(emails); 
 })
-
 
 // READ
 app.get('/emails/:id', (req, res) => {

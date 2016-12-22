@@ -1,11 +1,11 @@
 <template>
   <section class="emails-main">
-      <h2 class="text-center">emails-app</h2>
+    <h2 class="text-center">emails-app</h2>
     <div class="emails-main-container">
       <email-list :emails="emails" @openEmail="selectEmail">
       </email-list>
       <div>
-      <email-details :selectedEmail="selectedEmail"></email-details>
+        <email-details :selectedEmail="selectedEmail"></email-details>
       </div>
     </div>
     <email-status :emails="emails"></email-status>
@@ -22,28 +22,38 @@
     data() {
       return {
 
-        
-        emails: [
-          { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
-          { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
-          { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false },
-          { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
-        ],
+        emails: [],
+        // emails: [
+        //   { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
+        //   { id: 2, subject: 'hello', from: 'Neta', body: '222', isRead: false },
+        //   { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false },
+        //   { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
+        // ],
         selectedEmail: {} //// TO DO - PUT A var w/ default email
         //id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false 
       }
     },
     methods: {
       selectEmail(emailId) {
+        // this.$router.push(`/emails/${emailId}`)
         this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
         // change read status
-        this.selectedEmail.isRead = true;
+        (!this.selectedEmail.isRead) ? this.selectedEmail.isRead = true : this.selectedEmail.isRead;
+        this.$http.put(`/emails/${this.selectedEmail.id}`)
         // console.log('Email id selected: ', this.selectedEmail);
+      },
+      reloadEmails() {
+        this.$http.get('emails')
+          .then(res => res.json())
+          .then(emails => this.emails = emails);
       }
     },
     computed: {},
     mounted() {
       //this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
+    },
+    created() {
+      this.reloadEmails();
     },
     components: {
       'email-list': EmailList,
