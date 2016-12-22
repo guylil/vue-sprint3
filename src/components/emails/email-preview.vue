@@ -1,6 +1,5 @@
 <!--Here I tryied to treat an Eamil as an Item-->
 <template>
-  
   <section class="emails_head" @click="openItem" :style="(item.isRead) ? 'font-weight: normal' : 'font-weight: bold'">
     <div class="flex">
       <div>
