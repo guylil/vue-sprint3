@@ -38,9 +38,10 @@
         // this.$router.push(`/emails/${emailId}`)
         this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
         // change read status
+        // console.log(this.selectedEmail.isRead); //expected false
         (!this.selectedEmail.isRead) ? this.selectedEmail.isRead = true : this.selectedEmail.isRead;
-        this.$http.put(`/emails/${this.selectedEmail.id}`)
-        // console.log('Email id selected: ', this.selectedEmail);
+        // console.log(this.selectedEmail.isRead); // //expected true
+        this.$http.put(`emails/${this.selectedEmail.id}`,this.selectedEmail)
       },
       reloadEmails() {
         this.$http.get('emails')
