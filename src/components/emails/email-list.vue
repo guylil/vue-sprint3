@@ -35,6 +35,7 @@
 
 <style scoped>
 .emails_list{
+  min-width: 370px;
   list-style-type: none;
   background-color: lightblue;
   padding: 10px 6px;

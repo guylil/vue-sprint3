@@ -6,7 +6,7 @@
         <span class="caption">Subject:</span> {{item.subject}} 
         <span class="caption">Sender:</span> {{item.from}}
       </div>
-      <div class="border nowrap">
+      <div class=" nowrap">
         <!-- status | delete -->
         <span @click="optionClicked" class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
         <span @click="starClicked" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
@@ -34,7 +34,7 @@
         this.$emit('openItem', this.item.id)
       },
       optionClicked(){console.log('optionClicked')},
-      starClicked(){console.log('starClicked')},
+      starClicked(){(console.log('starClicked'))},
       removeClicked(){console.log('removeClicked')}
     },
     computed: {},

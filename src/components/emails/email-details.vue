@@ -37,6 +37,7 @@
 
 <style scoped>
 .single_email_wrapper{
+  min-width: 370px;
   box-shadow: 0 1px 5px #000000;
   border-radius: 3px;
   padding: 3px;
