@@ -77,8 +77,8 @@
     font-size: 22px;
     color: #23527c;
     cursor: pointer;
-    margin: 10px 0;
-    height: 102px;
+    margin: 0 0 10px 0;
+    height: 100px;
     overflow: hidden;
     border-bottom: solid 1px grey;
   }

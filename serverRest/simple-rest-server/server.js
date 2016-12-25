@@ -7,7 +7,9 @@ app.use(express.static('public'))
 app.use(cors());
 app.use(bodyParser.json());
 
-var data = require('./EventsRecommended.js');
+app.listen(3000, () => {
+  console.log('REST API listening on port 3000!')
+})
 
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
@@ -19,6 +21,10 @@ var data = require('./EventsRecommended.js');
 //     {id: 8,title: 'Mastering SCSS', price: 78, description: 'bla bla'},
 //     {id: 9,title: 'Mastering $', price: 8, description: 'jq bla bla'}
 // ];
+
+var eventsDataObj = require('./EventsRecommended.js');
+
+let events = eventsDataObj.events;
 
 let item = [
   { id: 1, name: 'Carmos', price: 98982, isSelected: false },
@@ -34,9 +40,16 @@ let emails = [
   { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
 ]
 
+function findNextId(dataSetName) {
+  var maxId = 0;
+  dataSetName.forEach(item => {
+    if (item.id > maxId) maxId = item.id;
+  });
+  return maxId + 1;
+}
 
 // *** REST API ***
-
+// ** EMAILS **/
 // LIST
 app.get('/emails', (req, res) => {
     // setTimeout(()=>res.json(items), 2000);
@@ -60,7 +73,7 @@ app.delete('/emails/:id', (req, res) => {
 // CREATE
 app.post('/emails', (req, res) => {
   const email = req.body;
-  email.id = findNextId();
+  email.id = findNextId(emails);
   emails.push(email);
   res.json({ msg: 'Item was added!' });
 })
@@ -72,14 +85,48 @@ app.put('/emails/:id', (req, res) => {
   res.json({ msg: 'Item was updates!' });
 })
 
-app.listen(3000, () => {
-  console.log('REST API listening on port 3000!')
+
+
+
+
+
+
+
+
+
+// ** EVENTS **/
+// LIST
+app.get('/events', (req, res) => {
+    // setTimeout(()=>res.json(items), 2000);
+  res.json(events); 
 })
 
-function findNextId() {
-  var maxId = 0;
-  emails.forEach(email => {
-    if (email.id > maxId) maxId = email.id;
-  });
-  return maxId + 1;
-}
+// READ
+app.get('/event/:id', (req, res) => {
+  const id = +req.params.id;
+  const event = events.find(currItem => currItem.id === id);
+  res.json(event)
+})
+
+// DELETE
+app.delete('/event/:id', (req, res) => {
+  const id = +req.params.id;
+  events = events.filter(currItem => currItem.id !== id);
+  res.json({ msg: 'Deleted' });
+})
+
+// CREATE
+app.post('/events', (req, res) => {
+  const event = req.body;
+  event.id = findNextId(events);
+  events.push(event);
+  res.json({ msg: 'Item was added!' });
+})
+
+// UPDATE
+app.put('/event/:id', (req, res) => {
+  const event = req.body;
+  events = events.map(currItem => (currItem.id === event.id) ? event : currItem);
+  res.json({ msg: 'Item was updates!' });
+})
+
