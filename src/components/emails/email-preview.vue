@@ -7,15 +7,15 @@
         <span class="caption">Sender:</span> {{item.from}}
       </div>
       <div class="border nowrap">
-        fld der
+        <!-- status | delete -->
+        <span @click="optionClicked" class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+        <span @click="starClicked" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        <span @click="removeClicked" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
       </div>
     </div>
     
   </section>
-
 </template>
-
-
 <script>
 
   export default {
@@ -32,7 +32,10 @@
     methods: {
       openItem() {
         this.$emit('openItem', this.item.id)
-      }
+      },
+      optionClicked(){console.log('optionClicked')},
+      starClicked(){console.log('starClicked')},
+      removeClicked(){console.log('removeClicked')}
     },
     computed: {},
     components: {
@@ -53,9 +56,6 @@
   .flex{
     display: flex;
     justify-content: space-between;
-  }
-
-  .items-container{
   }
 
   .nowrap{
