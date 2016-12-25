@@ -2,7 +2,9 @@
   <section class="emails-main">
     <h2 class="text-center">emails-app</h2>
     <div class="btn-group flex space-around" role="group" aria-label="...">
-      <button type="button" @click="openCompose" class="btn btn-success">Compose</button>
+      <button type="button" class="btn btn-success">
+      <router-link to="/email/compose">Compose</router-link>
+      </button>
       <button type="button" class="btn btn-info">Delete</button>
       <button type="button" class="btn btn-warning">Forward</button>
       <button type="button" class="btn btn-danger">Replay</button>
@@ -11,15 +13,17 @@
       <email-list :emails="emails" @openEmail="selectEmail"></email-list>
       <div>
         <email-details :selectedEmail="selectedEmail"></email-details>
-      </div>
-    </div>
-    <email-status :emails="emails"></email-status>
-  </section>
+        <email-compose class="" style="display: block"></email-compose>
+</div>
+</div>
+<email-status :emails="emails"></email-status>
+</section>
 </template>
 
 <script>
   import EmailList from './email-list.vue'
   import EmailDetails from './email-details.vue'
+  import EmailCompose from './email-compose.vue'
   import EmailStatus from './email-status.vue'
 
   export default {
@@ -45,7 +49,7 @@
         this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
         // change read status
         // console.log(this.selectedEmail.isRead); //expected false
-        (!this.selectedEmail.isRead) ? this.selectedEmail.isRead = true : this.selectedEmail.isRead;
+        // (!this.selectedEmail.isRead) ? this.selectedEmail.isRead = true : this.selectedEmail.isRead;
         // console.log(this.selectedEmail.isRead); // //expected true
         this.$http.put(`emails/${this.selectedEmail.id}`, this.selectedEmail)
       },
@@ -54,8 +58,8 @@
           .then(res => res.json())
           .then(emails => this.emails = emails);
       },
-      openCompose(){
-        
+      openCompose() {
+
       },
     },
     computed: {},
@@ -68,7 +72,8 @@
     components: {
       'email-list': EmailList,
       'email-details': EmailDetails,
-      'email-status': EmailStatus
+      'email-status': EmailStatus,
+      EmailCompose,
     }
   }
 

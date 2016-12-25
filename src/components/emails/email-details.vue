@@ -37,6 +37,7 @@
   min-width: 370px;
   box-shadow: 0 1px 5px #000000;
   border-radius: 3px;
+  margin: 4px;
   padding: 3px;
 }
 
