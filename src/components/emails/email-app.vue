@@ -29,6 +29,7 @@
         //   { id: 3, subject: 'CodingAcademy Rulzz', from: 'Dor', body: '333', isRead: false },
         //   { id: 4, subject: 'CodingAcademy Ruls test test test test test test test test test test test ', from: 'Puki', body: '444', isRead: false }
         // ],
+      
         selectedEmail: {} //// TO DO - PUT A var w/ default email
         //id: 10, subject: 'CodingAcademy', from: 'Yaron', body: '111', isRead: false 
       }

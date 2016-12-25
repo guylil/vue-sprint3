@@ -1,6 +1,7 @@
 import Home             from './home.vue';
 import Emails           from './components/emails/email-app.vue';
 import Events           from './components/events/evento-app.vue';
+import Event           from './components/events/evento-details.vue';
 import Locations        from './locations.vue';
 
 // import Cars             from './pages/cars.vue';
@@ -12,6 +13,7 @@ export default [
     {path: '/', component: Home},
     {path: '/emails', component: Emails},
     {path: '/events', component: Events},
+    {path: '/event/:id', component: Event},
     {path: '/locations', component: Locations},
     
     // {path: '/car', component: Cars, children: [
@@ -20,6 +22,6 @@ export default [
     //     {path: ':id/edit', component: CarEdit},
     //     {path: ':id', component: CarDetails},
     // ]},
-    {path: '*', redirect: '/'}
+    //{path: '*', redirect: '/'}
 
 ]
