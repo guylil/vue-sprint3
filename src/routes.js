@@ -1,6 +1,6 @@
 import Home             from './home.vue';
 import Emails           from './components/emails/email-app.vue';
-import Events           from './events.vue';
+import Events           from './components/events/evento-app.vue';
 import Locations        from './locations.vue';
 
 // import Cars             from './pages/cars.vue';
