@@ -1,5 +1,4 @@
 <template>
-  
   <section>
     <br />
     <!-- selectedEmail is an empty object at first view of the page -->
@@ -11,9 +10,7 @@
       <div>{{selectedEmail.body}}</div>
     </div>
   </section>
-
 </template>
-
 <script>
     
   export default {
