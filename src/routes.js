@@ -22,6 +22,6 @@ export default [
     //     {path: ':id/edit', component: CarEdit},
     //     {path: ':id', component: CarDetails},
     // ]},
-    //{path: '*', redirect: '/'}
+    // {path: '*', redirect: '/'}
 
 ]

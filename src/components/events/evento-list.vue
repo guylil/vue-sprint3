@@ -4,17 +4,8 @@
     {{msg}}
     <br />
     <div v-for="(currEvent, idx) in events" class="______evento_flex">
-      <div class="evento_card">
-        <router-link :to="{ path: '/event/' + currEvent.id}">
-          <div class="evento_title">{{currEvent.name}}</div>
-        </router-link>
-
-        <div><strong>Event Time:</strong> {{currEvent.time}}</div>
-        <div><strong>Status:</strong> {{currEvent.status}}</div>
-        <div class="evento_content" v-html="currEvent.description"></div>
-        <div class="evento_edit">Edit</div>
-        <div class="evento_link"><a v-bind:href="currEvent.link" target="_blank">Link to the event</a></div>
-      </div>
+      <evento-preview :currEvent="currEvent">
+      </evento-preview>
     </div>
 
 
@@ -22,7 +13,7 @@
 </template>
 
 <script>
-  import EventoDetails from './evento-details.vue'
+  import EventoPreview from './evento-preview.vue'
 
   export default {
     props: {
@@ -38,14 +29,14 @@
     },
     computed: {},
     components: {
-      'evento-details': EventoDetails
+      'evento-preview': EventoPreview
     }
   }
 
 
 </script>
 
-<style scoped>
+<style>
   .border {
     border: solid 1px red;
   }
@@ -95,7 +86,7 @@
   }
   
   .evento_content img {
-    width: 100%;
+    max-width: 96%;
     border: solid 1px green;
   }
   
@@ -104,7 +95,7 @@
     background: lightblue;
     text-align: center;
     line-height: 20px;
-    margin: 10px 25px 0 0;
+    margin: 10px 0 0 0;
     float: left;
     border-radius: 3px;
     border: solid 1px grey;
@@ -117,7 +108,8 @@
   }
   
   .evento_link {
-    margin: 10px 7px 0 0;
+    margin: 11px 7px 0 0;
     float: right;
+    font-size: 14px;
   }
 </style>

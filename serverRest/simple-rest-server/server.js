@@ -25,6 +25,7 @@ app.listen(3000, () => {
 var eventsDataObj = require('./EventsRecommended.js');
 
 let events = eventsDataObj.events;
+// console.log(events);
 
 let item = [
   { id: 1, name: 'Carmos', price: 98982, isSelected: false },
@@ -79,7 +80,7 @@ app.post('/emails', (req, res) => {
 })
 
 // UPDATE
-app.put('/emails/:id', (req, res) => {
+app.put('/email', (req, res) => {
   const email = req.body;
   emails = emails.map(currItem => (currItem.id === email.id) ? email : currItem);
   res.json({ msg: 'Item was updates!' });
@@ -104,7 +105,8 @@ app.get('/events', (req, res) => {
 // READ
 app.get('/event/:id', (req, res) => {
   const id = +req.params.id;
-  const event = events.find(currItem => currItem.id === id);
+  const event = events.find(currItem => currItem.id == id);
+  // console.log(event);
   res.json(event)
 })
 
@@ -124,9 +126,9 @@ app.post('/events', (req, res) => {
 })
 
 // UPDATE
-app.put('/event/:id', (req, res) => {
+app.put('/event', (req, res) => {
   const event = req.body;
-  events = events.map(currItem => (currItem.id === event.id) ? event : currItem);
+  events = events.map(currItem => (currItem.id == event.id) ? event : currItem);
   res.json({ msg: 'Item was updates!' });
 })
 

@@ -1,24 +1,21 @@
-
-    <br clear="all" />
-    <div class="border evento_card">
+<br clear="all" />
+    <div class="evento_card">
       <!--$emit('showDetails', currEvent.id)-->
       <!--{{events[1].venue.lat}}-->
-      <div class="evento_title">
-        {{events[0].name}}
-        <div class="evento_close" title="Close event">X</div>
+      <div class="evento_title">{{currEvent.name}}
+        <div @click="goBack" class="evento_close" title="Close event">X</div>
       </div>
-      <div class="evento_time"><strong>Event Time:</strong> {{events[0].time}}</div>
-      <div class="evento_status"><strong>Status:</strong> {{events[0].status}}</div>
+      
+      <div @click="editEvent" class="evento_edit">Edit</div>
+      <div class="evento_save">Save</div>
+
+      <div class="evento_time"><strong>Event Time:</strong> {{currEvent.time}}</div>
+      <div class="evento_status"><strong>Status:</strong> {{currEvent.status}}</div>
       <div class="evento_map">
         <div class="map" ref="map">
-          <!--<iframe src="google.com" frameborder="0"></iframe>-->
-          <!--<iframe src="http://maps.google.com/maps/api/staticmap?sensor=false&center=32.106529235839844,34.83524703979492&zoom=14&size=300x400&markers=color:blue|label:S|32.106529235839844,34.83524703979492"></iframe>-->
         </div>
       </div>
       <br clear="all" />
-      <div class="evento_content" v-html="events[0].description"></div>
-      <div class="evento_edit">Edit</div>
-      <div class="evento_link"><a v-bind:href="events[0].link" target="_blank">Link to the event</a></div>
-      <!--http://maps.google.com/maps/api/staticmap?sensor=false&center=32.106529235839844,34.83524703979492&zoom=14&size=300x400&markers=color:blue|label:S|32.106529235839844,34.83524703979492-->
-      <!--{{events}}-->
+      <div class="evento_content" v-html="currEvent.description"></div>
+      <div class="evento_link"><a v-bind:href="currEvent.link" target="_blank">Link to the event</a></div>
     </div>
