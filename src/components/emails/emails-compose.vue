@@ -14,7 +14,7 @@
     },
     data() {
       return {
-        msg: 'Hello-email-COMPUSE'
+        msg: 'Hello-email-COMPOSE'
       }
     },
     methods: {},

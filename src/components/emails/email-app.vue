@@ -1,23 +1,22 @@
 <template>
   <section class="emails-main">
     <h2 class="text-center">emails-app</h2>
-    <div class="btn-group flex space-around" role="group" aria-label="...">
-      <button type="button" class="btn btn-success">
-      <router-link to="/email/compose">Compose</router-link>
-      </button>
+    <div class="btn-group flex space-around" role="group">
+      <button type="button" class="btn btn-success" @click="toggleActive">{{this.compose}}</button>
+      <!--<router-link to="/email/compose">Compose</router-link>
       <button type="button" class="btn btn-info">Delete</button>
       <button type="button" class="btn btn-warning">Forward</button>
-      <button type="button" class="btn btn-danger">Replay</button>
+      <button type="button" class="btn btn-danger">Replay</button>-->
     </div>
     <div class="emails-main-container">
-      <email-list :emails="emails" @openEmail="selectEmail"></email-list>
+      <email-list :emails="emails" @openEmail="selectEmail" v-bind:class="{ active : isActive }" @deleteEmail="deleteEmail"></email-list>
       <div>
-        <email-details :selectedEmail="selectedEmail"></email-details>
-        <email-compose class="" style="display: block"></email-compose>
-</div>
-</div>
-<email-status :emails="emails"></email-status>
-</section>
+        <email-details v-bind:class="{ active : isActive }" :selectedEmail="selectedEmail"></email-details>
+        <email-compose v-bind:class="{ active : !isActive }" @sendEmail=""></email-compose>
+      </div>
+    </div>
+    <email-status :emails="emails"></email-status>
+  </section>
 </template>
 
 <script>
@@ -30,7 +29,8 @@
 
     data() {
       return {
-
+        compose: 'Compose',
+        isActive: false,
         emails: [],
         // emails: [
         //   { id: 1, subject: 'hi from codingAcademy', from: 'Yaron', body: '111', isRead: false },
@@ -44,10 +44,17 @@
       }
     },
     methods: {
+      toggleActive() {
+        this.isActive = !this.isActive
+        if (this.isActive) { this.compose = 'Back' }
+        else { this.compose = 'Compose' }
+        this.reloadEmails()
+      },
       selectEmail(emailId) {
         // this.$router.push(`/emails/${emailId}`)
         this.selectedEmail = this.emails.filter((email) => { return (email.id === emailId) })[0];
         // change read status
+        this.selectedEmail.isRead = true;
         // console.log(this.selectedEmail.isRead); //expected false
         // (!this.selectedEmail.isRead) ? this.selectedEmail.isRead = true : this.selectedEmail.isRead;
         // console.log(this.selectedEmail.isRead); // //expected true
@@ -58,12 +65,17 @@
           .then(res => res.json())
           .then(emails => this.emails = emails);
       },
-      openCompose() {
-
-      },
+      deleteEmail(emailId) {
+        console.log('email.app', emailId);
+        this.$http.delete(`emails/${emailId}`);
+        this.reloadEmails();
+        // this.emails.filter((email) => { (email.id === emailId) ? false : true });
+        // this.$router.push(`emails/`);
+      }
     },
     computed: {},
     mounted() {
+      this.compose = 'Compose'
       //this.selectedEmail = this.emails.filter((email) => { return (email.id === 1) });
     },
     created() {
@@ -81,7 +93,9 @@
 </script>
 
 <style scoped>
-
+.active{
+  display: none;
+}
 .caption {
     color: blueviolet;
 }

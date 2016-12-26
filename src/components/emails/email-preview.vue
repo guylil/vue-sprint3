@@ -3,7 +3,7 @@
   <section class="emails_head" @click="openItem" :style="(item.isRead) ? 'font-weight: normal' : 'font-weight: bold'">
     <div class="flex">
       <div>
-        <span class="caption">Subject:</span> {{item.subject}} 
+        <span class="caption">Subject:</span> {{item.subject}}
         <span class="caption">Sender:</span> {{item.from}}
       </div>
       <div class=" nowrap">
@@ -13,7 +13,7 @@
         <span @click="removeClicked" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
       </div>
     </div>
-    
+
   </section>
 </template>
 <script>
@@ -33,9 +33,12 @@
       openItem() {
         this.$emit('openItem', this.item.id)
       },
-      optionClicked(){console.log('optionClicked')},
-      starClicked(){(console.log('starClicked'))},
-      removeClicked(){console.log('removeClicked')}
+      optionClicked() { console.log('optionClicked') },
+      starClicked() { (console.log('starClicked')) },
+      removeClicked() {
+        // console.log('removeClicked');
+        this.$emit('deleteItem', this.item.id);
+      }
     },
     computed: {},
     components: {
